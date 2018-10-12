@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Innovaccer - HackerCamp 2019</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        var gender, year, ID;
+        function myFunction(value) {
+            gender = value;
+         }
+        function func()
+        {
+            ID = document.getElementById('ID').value;
+            year = document.getElementById('year').value;
+            var dict=['{"id":"' + ID + '","year":"' + year + '","gender":"' + gender + '"}'];
+            j = JSON.parse(dict);
+            $.ajax({
+                    type: "POST",
+                    url: "http://127.0.0.1:5000/api/two/result",
+                    contentType: "application/json",
+                    data: JSON.stringify(j),
+                    dataType: "json",
+                    success: function(response) {
+                        row = "";
+                        for(var element in response)
+                        {
+                            row += "<tr><td>" + response[element] + "</td></tr>";
+                        }
+                        $('#tbody').append(row);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+   <div class="card indigo text-center z-depth-2 light-version py-4 px-5">
+<h1 style="color:white">Medical Condition</h1>
+</div>
+    <center>
+        <br><br>
+            Symptom ID: <input type="number" name="ID" id="ID"><br><br>
+            Birth year: <input type="text" name="year" id="year"><br><br>
+            <input type="radio" name="gender" value="male" onclick="myFunction(this.value)"> Male
+            <input type="radio" name="gender" value="female" onclick="myFunction(this.value)"> Female<br><br>
+            <button  value="Submit" onclick="func()">Submit</button><br><br><br>
+            <table style="width: 100%" class="table-striped">
+             <thead>
+                  <tr>
+                       <th>Result</th>
+                   </tr>
+             </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </center>
+        <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+</body>
+</html>
