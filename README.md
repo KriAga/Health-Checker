@@ -31,7 +31,7 @@ urllib3 1.23\
 
 ## Getting Started
 
-Open the project in Pycharm and run the ```Apimedic\web-app\app.py``` file. It will run the flask server. Open the link provided, in my case it was ```http://127.0.0.1:5000/``` I think it will remain same.  
+Open the project in Pycharm and run the ```Health-Checker\web-app\app.py``` file. It will run the flask server. Open the link provided, in my case it was ```http://127.0.0.1:5000/``` I think it will remain same.  
 
 
 
@@ -46,36 +46,36 @@ API 5 - http://127.0.0.1:5000/api/five/
 
 **API 1 - To fetch the symptoms**
 
-Using the [Apimedic API][111] fetching all the symptoms.\
-The [fetchSymptoms.py][11] file is the base on which the other files are also made so this particular API was of much importance.\
+Using the Apimedic API fetching all the symptoms.\
+The fetchSymptoms.py file is the base on which the other files are also made so this particular API was of much importance.\
 The code makes a file Symptoms.txt that stores all the symptoms in descending order of their lengths. This sorted data is also stored in a list. 
 
 
 **API 2 - To fetch the medical conditions**
 
-Again using the [Apimedic API][111] fetching all the medical conditions using the symptom ID and providing the year of birth and the gender for better results.
+Again using the Apimedic API fetching all the medical conditions using the symptom ID and providing the year of birth and the gender for better results.
 We can also fetch the medical condition with multiple symptoms by providing more than one symptom IDs.
 
 **API 3 - To fetch the treatment of a medical condition**
 
-This API was to be made by scraping the web. I explored some online available websites (https://www.nhsinform.scot/) for this purpose but wasn't able to find any particular website with all the required data. If any website had the data it was neither easily scrapable nor asured that data would be available.\
+This API was to be made by scraping the web. I explored some online available websites (https://www.nhsinform.scot/) for this purpose but wasn't able to find any particular website with all the required data. If any website had the data it was neither easily scrapable nor asured that data would be available.
 
 I mailed my query to Ravi Maink (ravi.manik@innovaccer.com) and he explained me the problem statement. He asked me to simple google search for the medical condition and get the treatment data. I understood where the resultant data was (Right hand side data of Google Search) but on further research found that Google had made that dynamic data unscrappable by libraries like BeautifulSoup and Scrapy on Chrome Browser.
 
 Here:
 https://stackoverflow.com/a/14431651
 
-I tried the alternate solutions provided by the stackoverflow answer only to find out that either they are too dificult to implement or are shut-down. So, I thought of an another way round by headless Chrome Selenium Automation. In layman's terms I am running a selenium chrome driver by the python script in the backend, searching for the medical condition on https://www.google.com/ and then scraping the right hand side dynamically generated data and storing it in a dictionary.\
+I tried the alternate solutions provided by the stackoverflow answer only to find out that either they are too dificult to implement or are shut-down. So, I thought of an another way round by headless Chrome Selenium Automation. In layman's terms I am running a selenium chrome driver by the python script in the backend, searching for the medical condition on https://www.google.com/ and then scraping the right hand side dynamically generated data and storing it in a dictionary.
 
-The problem statement also asked to store the once searched disease into the database, for this purpose I am using mysql server to store the data on my system locally. In my code the database would be created automatically and next time when the desease is searched it is first fetched from the database and in case it is unavaliable it then runs the selenium browser.\
+The problem statement also asked to store the once searched disease into the database, for this purpose I am using mysql server to store the data on my system locally. In my code the database would be created automatically and next time when the desease is searched it is first fetched from the database and in case it is unavaliable it then runs the selenium browser.
 
-The fact that we are making a google search gives us an advantage of bypassing the typing error. I store the disease and the treatment in the database only after getting the right searched data from the browser.\
+The fact that we are making a google search gives us an advantage of bypassing the typing error. I store the disease and the treatment in the database only after getting the right searched data from the browser.
 
 **API 4 - Finding nearest doctors based on given location**
 
 There were many methods to get this thing done. We can simply make a google search for ```doctors near me``` and get the map and show it on the browser but I dont think that it would be the right solution to the problem. I wanted to display the exact address of the doctor near me with his/her profile.
 
-I searched for the available APIs online and found three APIs. \
+I searched for the available APIs online and found three APIs. 
 *   BetterDoctor API - https://developer.betterdoctor.com/
 *   Practo - https://developers.practo.com/
 *   National Hospital Directory with Geo Code and additional parameters at https://data.gov.in/catalog/hospital-directory-national-health-portal
@@ -91,6 +91,8 @@ And hence the BetterDoctor API, it's only con that it is not available outside U
 I fetched data in the order of the closest doctors.
 
 For future work on this project one can easily make a whole profile page of the doctors with their Education, Bio, Claims, License Number etc. It is also possible to search for doctors who have a speciality in a particular field. 
+
+**API 5 - Finding nearest doctors based on given location**
 
 <!-- ## Deployment
 
