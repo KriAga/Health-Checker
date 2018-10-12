@@ -11,24 +11,24 @@
         <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+<style>
+    table tbody tr td {
+  font-size: 17px;
+}
+</style>
         <script>
-            function initialise()
-            {
-                $('#loader').hide();
-            }
+
             var gender, year, ID;
             function myFunction(value) {
                 gender = value;
              }
             function func()
             {
+                $("#tbody tr").remove();
                 ID = document.getElementById('ID').value;
                 year = document.getElementById('year').value;
                 var dict=['{"id":"' + ID + '","year":"' + year + '","gender":"' + gender + '"}'];
                 j = JSON.parse(dict);
-                $("#tbody tr").remove();
-                $('#loader').show();
                 $.ajax({
                         type: "POST",
                         url: "http://127.0.0.1:5000/api/two/result",
@@ -36,7 +36,6 @@
                         data: JSON.stringify(j),
                         dataType: "json",
                         success: function(response) {
-                            $('#loader').hide();
                             row = "";
                             for(var element in response)
                             {
@@ -50,37 +49,45 @@
                     });
             }
         </script>
-         <style>
-            table tbody tr td {
-              font-size: 17px;
-            }
-                        #loader {
-                border: 16px solid #f3f3f3; /* Light grey */
-                border-top: 16px solid #3498db; /* Blue */
-                border-radius: 50%;
-                width: 120px;
-                height: 120px;
-                animation: spin 2s linear infinite;
-            }
-
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-        </style>
     </head>
-    <body onload="initialise()">
+    <body>
         <br>
         <div class="container">
            <div class="card red text-center z-depth-2 light-version py-4 px-5">
         <h1 style="color:white">Medical Condition</h1>
         </div>
             <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
-            <center>
+<center>
+ <select id="mySelect" class="form-control" multiple style="width: 320px;height: 220px;margin-right: 0px">
+                        {% for name, id in symptomsData.items() %}
+                        <option value={{id}}>{{name}}</option>
+                 {% endfor %}
+                    </select>
 
-                <br>
+                    <script>
+
+                        function getID() {
+                              var result = [];
+                              var options = document.getElementById("mySelect");
+
+                              var opt;
+
+                              for (var i=0, iLen=options.length; i<iLen; i++) {
+                                opt = options[i];
+
+                                if (opt.selected) {
+                                  result.push(opt.value || opt.text);
+                                }
+                              }
+                              var ids=result.join(',');
+                              $("#ID").val(ids);
+                        }
+                    </script>
+            <button type="button" class="btn btn-outline-danger waves-effect" onclick="getID()">Get ID</button>
+    </center>
+             <center>
                 <div class="md-form">
-                    <input type="number" id="ID" class="form-control">
+                    <input type="text" id="ID" class="form-control">
                     <label for="ID" class="">Symptom ID:</label>
                 </div>
                 <div class="md-form">
@@ -94,9 +101,12 @@
                     </fieldset>
                 </form>
                 <button class="btn btn-success" value="Submit" onclick="func()">Submit</button><br><br><br>
-                <h4>Medical Condition</h4>
-                <div id="loader"></div>
                 <table style="width: 100%" class="table-striped">
+                     <thead>
+                          <tr>
+                               <th>Result</th>
+                           </tr>
+                     </thead>
                     <tbody id="tbody">
                     </tbody>
                 </table>
@@ -112,5 +122,6 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+
     </body>
 </html>

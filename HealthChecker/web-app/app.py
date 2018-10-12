@@ -8,6 +8,11 @@ import forDatabase as fd
 app = Flask(__name__)
 
 
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+
 @app.route('/api/one/')
 def one():
     symptomDict = fs.fetch()
@@ -18,7 +23,10 @@ def one():
 
 @app.route('/api/two/')
 def two():
-    return render_template("fetchMedicalConditions.html")
+    symptomDict = fs.fetch()
+    symptomStr = json.dumps(symptomDict)
+    symptomsData = json.loads(symptomStr)
+    return render_template("fetchMedicalConditions.html", symptomsData=symptomsData)
 
 
 @app.route('/api/two/result', methods=['POST'])

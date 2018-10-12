@@ -7,6 +7,7 @@ def fetch(text, gender, year_of_birth):
 
     flag = 0
     medicalConditionsDict = {}
+    fs.fetch()
     for symptom in fs.symptomsName:
         if symptom in text:
             flag = 1

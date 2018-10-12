@@ -11,7 +11,7 @@ authKey = token.getToken()
 
 def fetch():
     urlSymptoms = config.priaid_healthservice_url +'/symptoms?token=' + authKey + '&format=json&language=en-gb'
-    print(urlSymptoms)
+    # print(urlSymptoms)
     resultsSymptoms = urllib.request.urlopen(urlSymptoms).read()
     symptomsJson = ast.literal_eval(resultsSymptoms.decode("utf-8"))
 

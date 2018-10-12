@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
+
 def scrapeGoogle(disease):
     DRIVER = '''../chromedriver'''
 
@@ -12,7 +13,7 @@ def scrapeGoogle(disease):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
 
-    driver = webdriver.Chrome(DRIVER,   chrome_options=chrome_options)
+    driver = webdriver.Chrome(DRIVER, chrome_options=chrome_options)
     driver.set_window_size(1366, 768)
     driver.get('http://www.google.com')
     search = driver.find_element_by_name('q')
@@ -33,6 +34,6 @@ def scrapeGoogle(disease):
                 else:
                     treatmentData[key] = j.text
         disease = soup.find("div", {"class": "kno-ecr-pt"}).text
-        return disease ,treatmentData
+        return disease, treatmentData
     except:
-        return {"No Data":"No Data"}
+        return {"No Data": "No Data"}
