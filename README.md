@@ -31,7 +31,7 @@ urllib3 1.23\
 
 ## Getting Started
 
-Open the project in Pycharm and run the ```Health-Checker\web-app\app.py``` file. It will run the flask server. Open the link provided, in my case it was ```http://127.0.0.1:5000/``` I think it will remain same.  
+Open the project in Pycharm and run the ```Health-Checker\web-app\app.py``` file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
 
 
 
@@ -112,7 +112,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc -->
-
+<!-- 
 [11]:
 [111]: https://apimedic.com/
-[222]: http://www.codechef.com/problems/VCC11
+[222]: http://www.codechef.com/problems/VCC11 -->
