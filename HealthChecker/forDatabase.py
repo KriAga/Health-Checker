@@ -1,41 +1,39 @@
 import mysql.connector
 import scrapeWeb
 
-treatmentData = {}
-
 
 def databaseHandler():
-    myDB = mysql.connector.connect(
-        host="192.168.99.100",
-        user="root",
-        passwd="password"
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="admin",
+        passwd="admin"
     )
-    myCursor = myDB.cursor()
-    myCursor.execute("SHOW DATABASES")
+    mycursor = mydb.cursor()
+    mycursor.execute("SHOW DATABASES")
 
     createDatabase = True
-    for each in myCursor:
-        if each[0] == 'treatment':
+    for each in mycursor:
+        if (each[0] == 'treatment'):
             createDatabase = False
 
     if createDatabase:
         print("Creating Database ... ")
-        myCursor.execute("CREATE DATABASE treatment")
-        # myCursor.execute("CREATE TABLE data (disease VARCHAR(255), treatment VARCHAR(255), description VARCHAR(255))")
+        mycursor.execute("CREATE DATABASE treatment")
+        # mycursor.execute("CREATE TABLE data (disease VARCHAR(255), treatment VARCHAR(255), description VARCHAR(255))")
     else:
         print("Database already exists ...")
 
 
 databaseHandler()
 
-myDB = mysql.connector.connect(
-    host="192.168.99.100",
-    user="root",
-    passwd="password",
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="admin",
+    passwd="admin",
     database="treatment"
 )
-myCursor = myDB.cursor()
-myCursor.execute(
+mycursor = mydb.cursor()
+mycursor.execute(
     "CREATE TABLE IF NOT EXISTS data (disease VARCHAR(255), treatment VARCHAR(255), description VARCHAR(255))")
 
 
@@ -43,25 +41,25 @@ def insertData(disease, data):
     for eachType in data:
         query = "INSERT INTO data (disease, treatment, description) VALUES ('{}', '{}','{}')".format(disease, eachType,
                                                                                                      data[eachType])
-        myCursor.execute(query)
-    myDB.commit()
+        mycursor.execute(query)
+    mydb.commit()
 
 
 def showData(disease):
-    myCursor.execute("SELECT * FROM data where disease = '{}'".format(disease))
-    myResult = myCursor.fetchall()
+    treatmentData = {}
+    mycursor.execute("SELECT * FROM data where disease = '{}'".format(disease))
+    myresult = mycursor.fetchall()
 
-    if len(myResult) == 0:
-        tempData = scrapeWeb.scrapeGoogle(disease)
+    if len(myresult) == 0:
+        disease, tempData = scrapeWeb.scrapeGoogle(disease)
         insertData(disease, tempData)
-        showData(disease)
+        treatmentData = showData(disease)
     else:
-        for eachRow in myResult:
+        for eachRow in myresult:
             treatmentData[eachRow[1]] = eachRow[2]
-
-
-def findTreatment(disease):
-    showData(disease.upper())
     return treatmentData
 
 
+def fetch(disease):
+    treatmentData = showData(disease.upper())
+    return (treatmentData)
