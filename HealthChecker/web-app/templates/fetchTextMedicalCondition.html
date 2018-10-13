@@ -30,6 +30,7 @@
                         dataType: "json",
                         success: function(response) {
                             row = "";
+                            $("#tbody tr").remove();
                             for(var element in response)
                             {
                                 row += "<tr><td>" + response[element] + "</td></tr>";

@@ -39,6 +39,7 @@
                         dataType: "json",
                         success: function(response) {
                             row = "";
+                            $("#tbody tr").remove();
                             if(!isEmpty(response))
                             {
                                 for(var element in response)
