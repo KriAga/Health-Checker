@@ -11,21 +11,20 @@
         <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
         <script>
-            var gender, year, ID;
+            var gender, year, sentence;
             function myFunction(value) {
                 gender = value;
-             }
+            }
             function func()
             {
-                ID = document.getElementById('ID').value;
+                sentence = document.getElementById('sentence').value;
                 year = document.getElementById('year').value;
-                var dict=['{"id":"' + ID + '","year":"' + year + '","gender":"' + gender + '"}'];
+                var dict=['{"sentence":"' + sentence + '","year":"' + year + '","gender":"' + gender + '"}'];
                 j = JSON.parse(dict);
                 $.ajax({
                         type: "POST",
-                        url: "http://127.0.0.1:5000/api/two/result",
+                        url: "http://127.0.0.1:5000/api/five/result",
                         contentType: "application/json",
                         data: JSON.stringify(j),
                         dataType: "json",
@@ -48,30 +47,30 @@
         <br>
         <div class="container">
            <div class="card red text-center z-depth-2 light-version py-4 px-5">
-        <h1 style="color:white">Medical Condition</h1>
+        <h1 style="color:white">File Medical Condition</h1>
         </div>
             <center>
                 <br><br>
-                <div class="md-form">
-                    <input type="number" id="ID" class="form-control">
-                    <label for="ID" class="">Symptom ID:</label>
-                </div>
-                <div class="md-form">
-                    <input type="number" id="year" class="form-control">
-                    <label for="year" class="">Year of Birth:</label>
-                </div>
-                <form class="form-group">
-                    <fieldset class="form-group">
-                        <input type="radio" name="gender" value="male" onclick="myFunction(this.value)"> Male &nbsp;&nbsp;&nbsp;
-                        <input type="radio" name="gender" value="female" onclick="myFunction(this.value)"> Female<br>
-                    </fieldset>
-                </form>
-                <button class="btn btn-success" value="Submit" onclick="func()">Submit</button><br><br><br>
-                <table style="width: 100%" class="table-striped">
+                    <div class="md-form">
+                        <input type="text" id="sentence" class="form-control">
+                        <label for="sentence" class="">Enter your Sentence:</label>
+                    </div>
+                    <div class="md-form">
+                        <input type="number" id="year" class="form-control">
+                        <label for="year" class="">Year of Birth:</label>
+                    </div>
+                    <form class="form-group">
+                        <fieldset class="form-group">
+                            <input type="radio" name="gender" value="male" onclick="myFunction(this.value)"> Male &nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gender" value="female" onclick="myFunction(this.value)"> Female<br>
+                        </fieldset>
+                    </form>
+                    <button class="btn btn-primary" value="Submit" onclick="func()">Submit</button><br><br><br>
+                    <table style="width: 100%" class="table-striped">
                      <thead>
                           <tr>
                                <th>Result</th>
-                           </tr>
+                          </tr>
                      </thead>
                     <tbody id="tbody">
                     </tbody>
