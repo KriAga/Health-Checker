@@ -3,6 +3,10 @@
 Given a medical symptom, list down the possible medical conditions/diagnosis and for
 any given diagnosis suggest various treatments.
 
+A Demo Video of the whole project running can be found here.
+
+[Krishna Agarwal - Health Checker Demo.mp4] (/Krishna Agarwal - Health Checker Demo.mp4)
+
 ### Prerequisites
 
 Python3.6 \
@@ -60,7 +64,7 @@ We can also fetch the medical condition with multiple symptoms by providing more
 
 This API was to be made by scraping the web. I explored some online available websites (https://www.nhsinform.scot/) for this purpose but wasn't able to find any particular website with all the required data. If any website had the data it was neither easily scrapable nor asured that data would be available.
 
-I mailed my query to Ravi Maink (ravi.manik@innovaccer.com) and he explained me the problem statement. He asked me to simple google search for the medical condition and get the treatment data. I understood where the resultant data was (Right hand side data of Google Search) but on further research found that Google had made that dynamic data unscrappable by libraries like BeautifulSoup and Scrapy on Chrome Browser.
+I mailed my query to Ravi Maink (ravi.manik@innovaccer.com) and he explained me the problem statement. He asked me to simple google search for the medical condition and get the treatment data. I understood where the resultant data was (Right hand side data of Google Search) but on further research found that Google had made that dynamic data unscrappable directly by libraries like BeautifulSoup and Scrapy.
 
 Here:
 https://stackoverflow.com/a/14431651
@@ -90,22 +94,46 @@ And hence the BetterDoctor API, it's only con that it is not available outside U
 
 I fetched data in the order of the closest doctors.
 
-For future work on this project one can easily make a whole profile page of the doctors with their Education, Bio, Claims, License Number etc. It is also possible to search for doctors who have a speciality in a particular field. 
+For future work on this project one can easily make a whole profile page of the doctors with their Education, Bio, Claims, License Number etc. It is also possible to search for doctors who have a speciality in a particular field. It would be a great feature.
 
-**API 5 - Finding nearest doctors based on given location**
+**API 5 - Extract Symptom from sentence and show the Medical Condition**
+
+Taking a sentence as input that has one symptom. Extracting this symptom from the sentence and using it to fetch for the appropriate medical condition.
+
+I tried using nltk for this. I removed stopwords from the sentence but still words like ```I``` were left in the resultant text. I could have changed the stopwords.txt file of the nltk library but I wanted to find a much simpler approach. So, I tried to extract the Keywords from the sentence and it was successfull for words like ```headache``` but failed miserable for ```back pain```, ```brain cancer``` etc as they had two words and each being a keyword in itself. This could have been rectified by tweaking the library instead I did a better approach of looking for each symptom in the sentence and as soon as a symptom matched I fetched for its symptom ID from the dictionary that I made for API 1 and used it further to find the medical condition. 
+
+Reason why I had sorted the symptoms data in API 1 in the order of the largest symptom first was to help get the best result in API 5 here.
+
+```
+Example: 
+    sentence => "I am having abdominal and back pain"
+    symptomsName => ["fever", "headache", "back pain", "abdominal and back pain"]
+
+    Now, if we take each symptom and search for it in sentence we will get the result as "back pain" whereas the actual result should have been "abdominal and back pain".
+
+    Therefore I sorted the symptomsName in descending order so as to have symptomsName as:
+    ["abdominal and back pain", "back pain", "headache", "fever"]
+
+    Now, the result would be "abdominal and back pain".
+    Which is the right result.
+```
+
 
 <!-- ## Deployment
 
 Add additional notes about how to deploy this on a live system -->
 
+## Future Work
+
+We can deploy the whole project on Docker and implement more APIs from BetterDoctor API. We can also make a direct page to get the treatments based on the sentences of the user stating his/her symptoms of a medical disease.
 
 ## Authors
 
 * **Krishna Agarwal** - (https://github.com/Kriaga)
 
-<!-- ## License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details -->
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 <!-- ## Acknowledgments
 
