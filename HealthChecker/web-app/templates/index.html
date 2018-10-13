@@ -5,45 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Innovaccer - HackerCamp 2019</title>
-        <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Bootstrap core CSS -->
         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
         <link href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">
-        <!-- Your custom styles (optional) -->
         <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
     </head>
-    <body>
+    <body onload="initialise()">
         <br>
         <div class="container">
            <div class="card red text-center z-depth-2 light-version py-4 px-5">
-               <h1 style="color:white">Symptoms</h1>
-           </div>
-
-        <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
-            <center><h3>Data</h3></center>
-            <p id="data"></p>
-            <table style="width: 100%" class="table-striped">
-             <thead>
-                  <tr>
-                       <th>Name</th>
-                       <th>ID</th>
-                   </tr>
-             </thead>
-             {% for name, id in symptomsData.items() %}
-
-                    <tr>
-                       <th> {{ name }} </th>
-                       <td> {{ id }} </td>
-                    </tr>
-
-                 {% endfor %}
-        </table>
+        <h1 style="color:white">Home</h1>
         </div>
+            <center>
+                <br><br>
+                <h2>Medical Portal</h2>
+                <div>Health Checker is a website that will show you a list of symptoms, and for each symptom the medical conditions that are possible. It can also fetch the treatment online for a particular medical condition and the nearest doctors based on your location. It can also tell you your medical condition from a sentence having a recognizable symptom.</div>
+                <br><br>
+                <button type="button" class="btn btn-outline-primary btn-rounded waves-effect" onclick="location.href='/api/one';">API 1</button>
+                <button type="button" class="btn btn-outline-default btn-rounded waves-effect" onclick="location.href='/api/two';">API 2</button>
+                <button type="button" class="btn btn-outline-secondary btn-rounded waves-effect" onclick="location.href='/api/three';">API 3</button>
+                <button type="button" class="btn btn-outline-success btn-rounded waves-effect" onclick="location.href='/api/four';">API 4</button>
+                <button type="button" class="btn btn-outline-info btn-rounded waves-effect" onclick="location.href='/api/five';">API 5</button>
 
+
+            </center>
+        </div>
+        <center><img src="https://innovaccer.com/images/logo-simple.png" width="20%" style="margin-top: 10%"></center>
         <br>
         <!-- SCRIPTS -->
         <!-- JQuery -->

@@ -4,8 +4,6 @@ import json
 # lat = "39.0289"
 # long = "-116.5950"
 
-# Using BetterDoctor API
-
 
 def nearestDoctors(lat, long):
     userKey = "0fedaeaf5df36f560a93305c66e20373"

@@ -1,6 +1,7 @@
 import urllib.request
 import ast
 import tokenGen as token
+import config
 symptomsDict = {'Name': [], 'ID': []}
 IDs = []
 symptomsName = []
@@ -9,7 +10,8 @@ authKey = token.getToken()
 
 
 def fetch():
-    urlSymptoms = 'https://healthservice.priaid.ch/symptoms?token=' + authKey + '&format=json&language=en-gb'
+    urlSymptoms = config.priaid_healthservice_url +'/symptoms?token=' + authKey + '&format=json&language=en-gb'
+    print(urlSymptoms)
     resultsSymptoms = urllib.request.urlopen(urlSymptoms).read()
     symptomsJson = ast.literal_eval(resultsSymptoms.decode("utf-8"))
 

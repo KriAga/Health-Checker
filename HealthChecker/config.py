@@ -1,5 +1,5 @@
-username = "En25Y_GMAIL_COM_AUT"
-password = "Xs52CqRx4t7TDm38M"
-priaid_authservice_url = "https://authservice.priaid.ch/login"  # https://sandbox-authservice.priaid.ch/login
-priaid_healthservice_url = "https://healthservice.priaid.ch"
+username = "f7738168@nwytg.net"
+password = "Zj95Hey8KXg2m3ESa"
+priaid_authservice_url = "https://sandbox-authservice.priaid.ch/login" #https://healthservice.priaid.ch
+priaid_healthservice_url = "https://sandbox-healthservice.priaid.ch"
 language = "en-gb"

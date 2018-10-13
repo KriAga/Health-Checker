@@ -21,8 +21,8 @@
                 var diagnosis = document.getElementById('diagnosis').value;
                 var dict=['{"searchTerm":"' + diagnosis+'"}'];
                 j = JSON.parse(dict);
-                $('#loader').show();
                 $("#tbody tr").remove();
+                $('#loader').show();
                 $.ajax({
                         type: "POST",
                         url: "http://127.0.0.1:5000/api/three/result",
@@ -32,6 +32,7 @@
                         success: function(response) {
                             $('#loader').hide();
                             row = "";
+
                             for(var element in response)
                             {
                                 row += "<tr><td><b>" + element + "</b></td><td>" + response[element] + "</td></tr>";
@@ -47,19 +48,20 @@
         </script>
         <style>
             table tbody tr td {
-                  font-size: 17px;
-                }
-            #loader {
-                    border: 16px solid #f3f3f3; /* Light grey */
-                    border-top: 16px solid #3498db; /* Blue */
-                    border-radius: 50%;
-                    width: 120px;
-                    height: 120px;
-                    animation: spin 2s linear infinite;
-                }
+              font-size: 17px;
+            }
+                        #loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
+            }
+
             @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
         </style>
     </head>
@@ -69,16 +71,17 @@
            <div class="card red text-center z-depth-2 light-version py-4 px-5">
         <h1 style="color:white">Scraped Treatments</h1>
         </div>
+            <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
             <center>
                 <br><br>
-                <div class="md-form">
-                    <input type="text" id="diagnosis" class="form-control">
-                    <label for="diagnosis" class="">Enter your Medical Condition:</label>
-                </div>
-                <button class="btn btn-primary" value="Submit" onclick="func()">Submit</button><br><br><br>
+                    <div class="md-form">
+                        <input type="text" id="diagnosis" class="form-control">
+                        <label for="diagnosis" class="">Enter your Sentence:</label>
+                    </div>
+                    <button class="btn btn-primary" value="Submit" onclick="func()">Submit</button><br><br><br>
                 <h4>Treatment</h4>
                 <div id="loader"></div>
-                <table style="width: 100%" class="table-striped" >
+                    <table style="width: 100%" class="table-striped" >
                     <tbody id="tbody">
                     </tbody>
                 </table>
