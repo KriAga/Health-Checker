@@ -34,6 +34,7 @@ urllib3 1.23\
 
 ## Getting Started
 
+You need to start MySQL server.
 Open the project in Pycharm and run the [web-app\app.py](https://github.com/KriAga/Health-Checker/blob/master/HealthChecker/web-app/app.py) file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
 
 
