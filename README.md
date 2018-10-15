@@ -3,9 +3,8 @@
 Given a medical symptom, list down the possible medical conditions/diagnosis and for
 any given diagnosis suggest various treatments.
 
-A Demo Video of the whole project running can be found here.
-
-[Krishna Agarwal - Health Checker Demo.mp4] (/Krishna Agarwal - Health Checker Demo.mp4)
+A Demo Video of the whole project running can be found here.\
+[Demo Video - Health Checker.mp4](https://github.com/KriAga/Health-Checker/blob/master/Demo%20Video%20-%20Health%20Checker.mp4?raw=true)
 
 ### Prerequisites
 
@@ -35,7 +34,7 @@ urllib3 1.23\
 
 ## Getting Started
 
-Open the project in Pycharm and run the ```Health-Checker\web-app\app.py``` file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
+Open the project in Pycharm and run the [web-app\app.py](https://github.com/KriAga/Health-Checker/blob/master/HealthChecker/web-app/app.py) file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
 
 
 
@@ -51,7 +50,7 @@ API 5 - http://127.0.0.1:5000/api/five/
 **API 1 - To fetch the symptoms**
 
 Using the Apimedic API fetching all the symptoms.\
-The fetchSymptoms.py file is the base on which the other files are also made so this particular API was of much importance.\
+The [fetchSymptoms.py](https://github.com/KriAga/Health-Checker/blob/master/HealthChecker/fetchSymptoms.py) file is the base on which the other files are also made so this particular API was of much importance.\
 The code makes a file Symptoms.txt that stores all the symptoms in descending order of their lengths. This sorted data is also stored in a list. 
 
 
@@ -80,9 +79,9 @@ The fact that we are making a google search gives us an advantage of bypassing t
 There were many methods to get this thing done. We can simply make a google search for ```doctors near me``` and get the map and show it on the browser but I dont think that it would be the right solution to the problem. I wanted to display the exact address of the doctor near me with his/her profile.
 
 I searched for the available APIs online and found three APIs. 
-*   BetterDoctor API - https://developer.betterdoctor.com/
-*   Practo - https://developers.practo.com/
-*   National Hospital Directory with Geo Code and additional parameters at https://data.gov.in/catalog/hospital-directory-national-health-portal
+*   [BetterDoctor API](https://developer.betterdoctor.com/)
+*   [Practo](https://developers.practo.com/)
+*   [National Hospital Directory with Geo Code and additional parameters](https://data.gov.in/catalog/hospital-directory-national-health-portal)
 
 The Practo API was active for Indian locations (I tested the API on its portal) but is not available now as it is under revamp.
 
@@ -119,15 +118,12 @@ Example:
 ```
 
 
-<!-- ## Deployment
-
-Add additional notes about how to deploy this on a live system -->
 
 ## Future Work
 
 We can deploy the whole project on Docker and implement more APIs from BetterDoctor API. We can also make a direct page to get the treatments based on the sentences of the user stating his/her symptoms of a medical disease.
 
-## Authors
+## Author
 
 * **Krishna Agarwal** - (https://github.com/Kriaga)
 
@@ -135,12 +131,3 @@ We can deploy the whole project on Docker and implement more APIs from BetterDoc
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-<!-- ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc -->
-<!-- 
-[11]:
-[111]: https://apimedic.com/
-[222]: http://www.codechef.com/problems/VCC11 -->

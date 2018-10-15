@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 def scrapeGoogle(disease):
-    DRIVER = '''../chromedriver'''
+    DRIVER = '''chromedriver'''
 
     medicalCondition = disease
     chrome_options = Options()
