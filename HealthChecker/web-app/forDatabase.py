@@ -10,7 +10,7 @@ def databaseHandler():
         passwd=config.dbpassword
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SHOW DATABASES")
+    mycursor.execute("SHOW DATABASES")  # returns all the stored databases
 
     createDatabase = True
     for each in mycursor:
@@ -20,13 +20,14 @@ def databaseHandler():
     if createDatabase:
         print("Creating Database ... ")
         mycursor.execute("CREATE DATABASE treatment")
-        # mycursor.execute("CREATE TABLE data (disease VARCHAR(255), treatment VARCHAR(255), description VARCHAR(255))")
     else:
         print("Database already exists ...")
 
 
+# calling the databaseHandler() to create a Database if it does not exists already
 databaseHandler()
 
+# Creating the table if it does not exists after we are sure that the Database exits
 mydb = mysql.connector.connect(
     host=config.host,
     user=config.dbuser,
@@ -38,6 +39,7 @@ mycursor.execute(
     "CREATE TABLE IF NOT EXISTS data (disease VARCHAR(255), treatment VARCHAR(255), description VARCHAR(255))")
 
 
+#   insert data into the database
 def insertData(disease, data):
     for eachType in data:
         query = "INSERT INTO data (disease, treatment, description) VALUES ('{}', '{}','{}')".format(disease, eachType,
@@ -46,6 +48,7 @@ def insertData(disease, data):
     mydb.commit()
 
 
+#   returns the corresponding treatment of the disease
 def showData(disease):
     treatmentData = {}
     mycursor.execute("SELECT * FROM data where disease = '{}'".format(disease))
@@ -61,6 +64,7 @@ def showData(disease):
     return treatmentData
 
 
+#   main function
 def fetch(disease):
     treatmentData = showData(disease.upper())
-    return (treatmentData)
+    return treatmentData

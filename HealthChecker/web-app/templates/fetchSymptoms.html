@@ -19,31 +19,27 @@
     <body>
         <br>
         <div class="container">
-           <div class="card red text-center z-depth-2 light-version py-4 px-5">
+            <div class="card red text-center z-depth-2 light-version py-4 px-5">
                <h1 style="color:white">Symptoms</h1>
-           </div>
-
-        <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
+            </div>
+            <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
             <center><h3>Data</h3></center>
             <p id="data"></p>
             <table style="width: 100%" class="table-striped">
-             <thead>
-                  <tr>
-                       <th>Name</th>
-                       <th>ID</th>
-                   </tr>
-             </thead>
-             {% for name, id in symptomsData.items() %}
-
+                <thead>
                     <tr>
-                       <th> {{ name }} </th>
-                       <td> {{ id }} </td>
+                        <th>Name</th>
+                        <th>ID</th>
                     </tr>
-
-                 {% endfor %}
-        </table>
+                </thead>
+                {% for name, id in symptomsData.items() %}
+                    <tr>
+                        <th> {{ name }} </th>
+                        <td> {{ id }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
-
         <br>
         <!-- SCRIPTS -->
         <!-- JQuery -->

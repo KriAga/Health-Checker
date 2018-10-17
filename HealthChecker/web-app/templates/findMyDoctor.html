@@ -48,6 +48,7 @@
                             row = "";
                             if(!isEmpty(response))
                             {
+                                row = "<thead><tr><th>Name</th><th>Specialisations</th><th>Address</th></tr></thead>"
                                 for(var element in response)
                                 {
                                     if(response[element]['Name'] && response[element]['specialities'][0] && response[element]['address'])

@@ -11,17 +11,16 @@
         <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<style>
-    table tbody tr td {
-  font-size: 17px;
-}
-</style>
+        <style>
+            table tbody tr td {
+                font-size: 17px;
+            }
+        </style>
         <script>
-
             var gender, year, ID;
             function myFunction(value) {
                 gender = value;
-             }
+            }
             function func()
             {
                 $("#tbody tr").remove();
@@ -53,38 +52,33 @@
     <body>
         <br>
         <div class="container">
-           <div class="card red text-center z-depth-2 light-version py-4 px-5">
-        <h1 style="color:white">Medical Condition</h1>
-        </div>
+            <div class="card red text-center z-depth-2 light-version py-4 px-5">
+                <h1 style="color:white">Medical Condition</h1>
+            </div>
             <button type="button" class="btn btn-outline-danger waves-effect"  onclick="location.href='/';">Home</button>
-<center>
- <select id="mySelect" class="form-control" multiple style="width: 320px;height: 220px;margin-right: 0px">
+            <center>
+                <select id="mySelect" class="form-control" multiple style="width: 320px;height: 220px;margin-right: 0px">
                         {% for name, id in symptomsData.items() %}
-                        <option value={{id}}>{{name}}</option>
-                 {% endfor %}
-                    </select>
-
-                    <script>
-
-                        function getID() {
-                              var result = [];
-                              var options = document.getElementById("mySelect");
-
-                              var opt;
-
-                              for (var i=0, iLen=options.length; i<iLen; i++) {
-                                opt = options[i];
-
-                                if (opt.selected) {
-                                  result.push(opt.value || opt.text);
-                                }
-                              }
-                              var ids=result.join(',');
-                              $("#ID").val(ids);
+                            <option value={{id}}>{{name}}</option>
+                        {% endfor %}
+                </select>
+                <script>
+                    function getID() {
+                        var result = [];
+                        var options = document.getElementById("mySelect");
+                        var opt;
+                        for (var i=0, iLen=options.length; i<iLen; i++) {
+                            opt = options[i];
+                            if (opt.selected) {
+                                result.push(opt.value || opt.text);
+                            }
                         }
-                    </script>
-            <button type="button" class="btn btn-outline-danger waves-effect" onclick="getID()">Get ID</button>
-    </center>
+                        var ids=result.join(',');
+                        $("#ID").val(ids);
+                    }
+                 </script>
+                <button type="button" class="btn btn-outline-danger waves-effect" onclick="getID()">Get ID</button>
+            </center>
              <center>
                 <div class="md-form">
                     <input type="text" id="ID" class="form-control">

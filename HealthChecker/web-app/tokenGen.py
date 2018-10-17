@@ -4,7 +4,7 @@ import base64
 import config
 import json
 
-
+# Generating the token for APIMEDIC.
 def getToken():
     username = config.username
     password = config.password

@@ -11,8 +11,7 @@ A Demo Video of the whole project running can be found here. 🎥 \
 Python3.6 🐍 \
 PyCharm \
 Mysql 8.0.11.0 \
-Selenium driver 
-
+Selenium driver
 
 ### Dependencies
 
@@ -31,16 +30,15 @@ scraper 0.1.0\
 selenium 3.14.1\
 urllib3 1.23 
 
-
 ## Getting Started 👍
 
 You need to start MySQL server.
 Open the project in Pycharm and run the [web-app\app.py](https://github.com/KriAga/Health-Checker/blob/master/HealthChecker/web-app/app.py) file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
 
-
 ## Deployment
+
 💥*Edit:* 💥 ➕ \
-Added a deployable Docker Image 🐋 for the project. Having issues with API 3 and it is still not working, all other APIs are fully functional (1, 2, 4 and 5).
+Added a deployable Docker Image 🐋 for the project. Having issues with API 3 on Docker and it is still not working, all other APIs are fully functional (1, 2, 4 and 5).
 
 For API 3, I think I'll have to run a seperate docker that will run the browser and then get the data. I am not familiar about integrating browser as of now so not able to implement this portion. We can run the API 3 locally for now. 😶
 
@@ -85,7 +83,7 @@ I tried the alternate solutions provided by the stackoverflow answer only to fin
 
 The problem statement also asked to store the once searched disease into the database 📁 , for this purpose I am using mysql server to store the data on my system locally. In my code the database would be created automatically and next time when the desease is searched it is first fetched from the database and in case it is unavaliable it then runs the selenium browser.
 
-The fact that we are making a google search gives us an advantage of bypassing the typing error. I store the disease and the treatment in the database only after getting the right searched data from the browser. 🙌
+The fact that we are making a google search gives us an advantage of bypassing the typing error. No matter if we mistype a little bit of the medical conmdition we will get the correct result. I store the disease and the treatment in the database only after getting the right searched data from the browser. 🙌
 
 **API 4 - Finding nearest doctors based on given location**
 

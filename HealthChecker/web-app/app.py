@@ -59,6 +59,7 @@ def four():
 def apiFourResult():
     data = request.get_json()
     nearestDocs = nd.nearestDoctors(data["lat"], data["long"])
+    print(nearestDocs)
     nearestDocsDict = json.dumps(nearestDocs)
     return nearestDocsDict
 
