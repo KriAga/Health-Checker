@@ -29,7 +29,7 @@ request 1.0.2\
 requests 2.19.1\
 scraper 0.1.0\
 selenium 3.14.1\
-urllib3 1.23\
+urllib3 1.23 
 
 
 ## Getting Started 👍
@@ -38,11 +38,18 @@ You need to start MySQL server.
 Open the project in Pycharm and run the [web-app\app.py](https://github.com/KriAga/Health-Checker/blob/master/HealthChecker/web-app/app.py) file. It will run the flask server. Open the link provided => ```http://127.0.0.1:5000/```
 
 
+## Deployment
 💥*Edit:* 💥 ➕ \
-Added a deployable Docker Image 🐋 for the project. Having issues with API 3 and it is still not working all other APIs are fully functional.
+Added a deployable Docker Image 🐋 for the project. Having issues with API 3 and it is still not working, all other APIs are fully functional (1, 2, 4 and 5).
 
-For API 3, I think I'll have to run a seperate docker that will run the browser and then get the data. I am not familiar about integrating browser as of now so not able to implement this portion. We can run the API3 locally as of now. 😶
+For API 3, I think I'll have to run a seperate docker that will run the browser and then get the data. I am not familiar about integrating browser as of now so not able to implement this portion. We can run the API 3 locally for now. 😶
 
+
+```
+sudo docker run --name mysql -e MYSQL_ROOT_PASSWORD=password -d mysql:5.5
+
+sudo docker run -itd -p 5000:5000 --name app --link mysql:mysql -d kriaga/healthapi:latest
+```
 
 ## Running the tests
 API 1 - http://127.0.0.1:5000/api/one/ \
@@ -131,7 +138,7 @@ We can ~~deploy the whole project on Docker~~ and implement more APIs from Bette
 
 ## Author ✍️
 
-* **Krishna Agarwal** - (https://github.com/Kriaga)
+* [**Krishna Agarwal**](https://github.com/Kriaga)
 
 ## License 📄
 

@@ -31,7 +31,7 @@
                 j = JSON.parse(dict);
                 $.ajax({
                         type: "POST",
-                        url: "http://127.0.0.1:5000/api/two/result",
+                        url: "/api/two/result",
                         contentType: "application/json",
                         data: JSON.stringify(j),
                         dataType: "json",
